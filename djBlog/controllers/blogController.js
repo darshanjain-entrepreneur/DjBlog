@@ -72,7 +72,7 @@ return res.status(201).send({
 
 exports.updateBlogController = async (req , res) => {
 try {
-    const id = req.params.id;
+    const {id} = req.params;
 
     const {title , description , image} = req.body;
 
@@ -96,7 +96,43 @@ try {
 
 }
 
-exports.getBlogbyIdController = ()  => {};
+exports.getBlogbyIdController = async  (req , res)  => {
+
+try {
+    
+    const {id} = req.params
+    const blog = await blogModel.findById(id);
+    if(!blog){
+
+        return res.status(400).send({
+            success:false,
+            message:"blog not found with this id"
+          
+        })
+    }
+
+return res.status(200).send({
+    success:true,
+    message:"fetched single blog",
+    blog
+})
+
+
+} catch (error) {
+    console.log(error);
+    return res.status(400).send({
+        success:false,
+        message:"Failed to get the single blog by id",
+        error
+    })
+
+
+}
+
+};
+
+
+
 
 exports.deleteBlogController = () => {
     
