@@ -134,6 +134,28 @@ return res.status(200).send({
 
 
 
-exports.deleteBlogController = () => {
+exports.deleteBlogController = async (req , res) => {
     
+try {
+
+   await blogModel.findOneAndDelete(req.params.id);
+   return res.status(200).send({
+    success:true,
+    message:"Blog deleted successfully"
+
+   })
+
+    
+} catch (error) {
+    console.log(error);
+    return res.status(400).send({
+        success:false,
+        message:"Failed to delete the blog",
+        error
+
+    })
+    
+}
+
+
 }
