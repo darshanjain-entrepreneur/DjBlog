@@ -15,7 +15,13 @@ password:{
 type:String,
 required:[true ,'password is reqired']
 
-}
+},
+blogs:[
+    {
+        type:mongoose.Types.ObjectId,
+        ref:'Blog'
+    }
+]
 
 
 
