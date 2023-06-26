@@ -70,7 +70,31 @@ return res.status(201).send({
 
 }
 
-exports.updateBlogController = () => {}
+exports.updateBlogController = async (req , res) => {
+try {
+    const id = req.params.id;
+
+    const {title , description , image} = req.body;
+
+    const blog = await  blogModel.findByIdAndUpdate(id , {...req.body} , {new: true});
+    
+    return res.status(200).send({
+        success: true,
+        message:"Blog Updated",
+        blog
+    })
+    
+} catch (error) {
+    console.log(error);
+    return res.status(400).send({
+        success:false,
+        message:"Error while updating blog",
+        error
+    })
+
+}
+
+}
 
 exports.getBlogbyIdController = ()  => {};
 
