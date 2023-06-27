@@ -39,6 +39,7 @@ const Login = () => {
   })
   
   if(data.success){
+    localStorage.setItem('userId' , data?.user._id)
     alert('User Login Successful');
     dispatch(authActions.login())
     navigate('/blogs');
