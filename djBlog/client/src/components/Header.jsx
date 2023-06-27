@@ -1,9 +1,12 @@
 import React , {useState} from 'react'
-import {Box , Button , Toolbar , AppBar, Typography, Tabs} from "@mui/material"
+import {Box , Button , Toolbar , AppBar, Typography, Tabs, Tab} from "@mui/material"
 import { Link } from 'react-router-dom'
 
 
 const Header = () => {
+
+const [value , setValue] = useState()
+
   return (
    <>
    <AppBar position='sticky'>
@@ -12,8 +15,9 @@ const Header = () => {
            DjBlog
         </Typography>
             <Box display={'flex'} margin-left={'auto'} marginRight={'auto'}>
-             <Tabs textColor='inherit'>
-
+             <Tabs textColor='inherit'value={value} onChange={(e , val) => setValue(val)}>
+               <Tab label="Blogs" LinkComponent={Link} to="/blogs"/>
+               <Tab label="My Blogs" LinkComponent={Link} to="/myblogs"/>
              </Tabs>
 
             </Box>
