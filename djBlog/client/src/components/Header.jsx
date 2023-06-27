@@ -20,7 +20,7 @@ const [value , setValue] = useState()
            DjBlog
         </Typography>
             {isLogin && (
-                <Box display={'flex'} margin-left={'auto'} marginRight={'auto'}>
+                <Box display='flex' margin-left={'auto'} marginRight={'auto'}>
                 <Tabs textColor='inherit'value={value} onChange={(e , val) => setValue(val)}>
                   <Tab label="Blogs" LinkComponent={Link} to="/blogs"/>
                   <Tab label="My Blogs" LinkComponent={Link} to="/myblogs"/>
