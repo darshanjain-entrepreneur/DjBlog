@@ -1,13 +1,33 @@
-import React from 'react'
+import React , {useState} from 'react'
 import {Box , Typography , TextField , Button} from "@mui/material"
 import {useNavigate} from "react-router-dom"
 
 const Register = () => {
 
 const navigate = useNavigate();
+const [inputs , setInputs] = useState({
+  name:'',
+  email:'',
+  password:''
+})
+
+const handleChange = (e) => {
+  setInputs((prevState) => ({
+    ...prevState ,
+    [e.target.name]:e.target.value}
+  ))
+}
+
+const handleSubmit = (e) => {
+  e.preventDefault();
+  console.log(inputs);
+
+}
+
 
   return (
  <>
+ <form onSubmit={handleSubmit}>
  <Box maxWidth={450} display='flex' flexDirection={'column'}
  alignItems="center"
  justifyContent="center"
@@ -23,11 +43,11 @@ const navigate = useNavigate();
   REGISTER
   </Typography>
   <TextField placeholder='Name' name='name'
-  margin={"normal"} type={"text"} required/>
+  margin={"normal"} type={"text"} required value={inputs.name} onChange={handleChange}/>
   <TextField placeholder='Email' name='email'
-  margin={"normal"} type={"email"} required/>
+  margin={"normal"} type={"email"} required value={inputs.email} onChange={handleChange}/>
   <TextField placeholder='Password' name='password'
-  margin={"normal"} type={"password"} required/>
+  margin={"normal"} type={"password"} required value={inputs.password} onChange={handleChange}/>
  
  
   <Button type='submit' variant={'contained'} color='primary'
@@ -39,6 +59,7 @@ const navigate = useNavigate();
   onClick={() => navigate('/login')}
   >Already Register ? Please Login</Button>
  </Box>
+ </form>
  </>
   )
 }
