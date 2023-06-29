@@ -3,3 +3,31 @@
   padding: 0;
   box-sizing: border-box;
 }
+body{
+  background-color:aliceblue;
+}
+
+.hello{
+text-decoration: none;
+color:white;
+font-size: 1.9rem;
+}
+
+.hellohidiv{
+height: 70px;
+width: 50%;
+border:1px solid white;
+margin: auto;
+display: flex;
+align-items: center;
+justify-content: center;
+margin-top: 100px;
+border-radius: 16px;
+background-color: rgb(33, 33, 33);
+}
+
+.hellohi{
+text-align: center;
+font-size: 1.8rem;
+color:white;
+}

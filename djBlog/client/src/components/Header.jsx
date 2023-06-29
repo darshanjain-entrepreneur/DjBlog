@@ -1,4 +1,5 @@
 import React from "react";
+import "../index"
 import { useNavigate } from "react-router-dom";
 import {
   Box,
@@ -40,15 +41,8 @@ const Header = () => {
     <>
       <AppBar position="sticky">
         <Toolbar>
-        <Button
-     
-      sx={{ margin: 1, color: 'white' }}
-      size="large"
-      component={Link}
-      to="/blogs"
-    >
-      DjBlog
-    </Button>
+       
+        <Link className="hello" to={"/blogs"}>DjBlog</Link>
           {isLogin && (
             <Box display={"flex"} marginLeft="auto" marginRight={"auto"}>
               {/* <Tabs

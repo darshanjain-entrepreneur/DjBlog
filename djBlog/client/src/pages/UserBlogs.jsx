@@ -1,6 +1,7 @@
 import React , {useState , useEffect} from 'react'
 import axios from 'axios'
 import BlogCard from '../components/BlogCard';
+import "../index"
 
 const UserBlogs = () => {
 
@@ -35,7 +36,10 @@ useEffect(() => {
       <BlogCard isUser={true} id={blog?._id} title={blog?.title} description={blog?.description} image={blog?.image} 
       username={blog?.user?.username} time={blog?.createdAt}/>
 
-  ))):(<h1>You have not created the blog</h1>)
+  ))):(<div className='hellohidiv'>
+
+<h1 className='hellohi'>You have not created the blog</h1>
+  </div>)
   }
    </div>
   )
