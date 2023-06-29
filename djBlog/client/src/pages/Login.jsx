@@ -4,7 +4,7 @@ import {useNavigate} from "react-router-dom"
 import axios from "axios";
 import {useDispatch} from "react-redux"
 import {authActions} from "../redux/store"
- 
+ import toast  from "react-hot-toast"
 
 
 
@@ -38,15 +38,18 @@ const Login = () => {
     password:inputs.password
   })
   
-  if(data.success){
+  if(data?.success){
     localStorage.setItem('userId' , data?.user._id)
-    alert('User Login Successful');
+    toast.success('User Login Successful');
     dispatch(authActions.login())
     navigate('/blogs');
+  }else{
+    toast.error(data?.message);
   }
+  
     
    } catch (error) {
-    console.log(error);
+    toast.error(error.message)
   
    }
   

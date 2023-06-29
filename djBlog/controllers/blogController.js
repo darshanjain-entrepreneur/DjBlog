@@ -44,16 +44,24 @@ exports.createBlogController = async (req , res) => {
 try {
     const { title, description, image, user } = req.body;
     //validation
-    if (!title || !description || !image || !user) {
-      return res.status(400).send({
+
+if(!user){
+    return res.status(200).send({
         success: false,
-        message: "Please Provide ALl Fields",
+        message: "Please Login",
+      });
+}
+
+    if (!title || !description || !image || !user) {
+      return res.status(200).send({
+        success: false,
+        message: "Please Provide ALL Fields",
       });
     }
     const exisitingUser = await userModel.findById(user);
     //validaton
     if (!exisitingUser) {
-      return res.status(404).send({
+      return res.status(200).send({
         success: false,
         message: "unable to find user",
       });

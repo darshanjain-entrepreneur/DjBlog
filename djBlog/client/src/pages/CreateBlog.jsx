@@ -2,6 +2,7 @@ import { Box, Button, InputLabel, TextField, Typography } from '@mui/material';
 import React , {useState} from 'react'
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
+import toast from 'react-hot-toast'
 
 const CreateBlog = () => {
 
@@ -37,12 +38,14 @@ try {
     })
 
     if(data?.success){
-        alert("blog created successfully")
+        toast.success("blog created successfully")
         navigate('/myblogs')
+    }else{
+        toast.error(data?.message);
     }
     
 } catch (error) {
-    console.log(error);
+    toast.error(error.message);
 }
 
 }

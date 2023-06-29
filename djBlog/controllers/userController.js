@@ -10,7 +10,7 @@ const {username , email , password} = req.body;
 
 if(!username || !email || !password){
 
-   return  res.status(400).send({
+   return  res.status(200).send({
         success:false ,
         message:"Please fill all fields"
     })
@@ -20,7 +20,7 @@ if(!username || !email || !password){
 const existingUser  = await userModel.findOne({email});
 
 if(existingUser){
-  return  res.status(401).send({
+  return  res.status(200).send({
         success:false ,
         message:"User already exists"
     })
@@ -33,7 +33,7 @@ const user = new userModel({
     username , email , password:hashedpassword
 })
 await user.save()
-return res.status(201).send({
+return res.status(200).send({
     success:true ,
     message:"User successfully Registered",
     user
@@ -108,7 +108,7 @@ return res.status(200).send({
 const isMatch = await bcrypt.compare(password , user.password);
 
 if(!isMatch){
-    return res.status(401).send({
+    return res.status(200).send({
         success:false ,
         message:"Invalid username or password"
 

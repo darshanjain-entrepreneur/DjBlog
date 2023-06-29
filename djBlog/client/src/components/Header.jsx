@@ -1,10 +1,10 @@
-import React, { useState } from "react";
+import React from "react";
 import { useNavigate } from "react-router-dom";
 import {
   Box,
   AppBar,
   Toolbar,
-  Button,
+
   Typography,
   Tabs,
   Tab,
@@ -12,7 +12,8 @@ import {
 import { Link } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { authActions } from "../redux/store";
-
+import toast  from "react-hot-toast";
+import Button from '@mui/material/Button';
 const Header = () => {
   // global state
   let isLogin = useSelector((state) => state.isLogin);
@@ -21,37 +22,73 @@ const Header = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   //state
-  const [value, setValue] = useState(0);
+ 
 
   //logout
   const handleLogout = () => {
     try {
       dispatch(authActions.Logout());
-     alert('logged out');
+    toast.success('logged out');
      localStorage.removeItem("userId");
       navigate("/login");
   
     } catch (error) {
-      console.log(error);
+      toast.error(error.message);
     }
   };
   return (
     <>
       <AppBar position="sticky">
         <Toolbar>
-          <Typography variant="h4">DjBlog</Typography>
+        <Button
+     
+      sx={{ margin: 1, color: 'white' }}
+      size="large"
+      component={Link}
+      to="/blogs"
+    >
+      DjBlog
+    </Button>
           {isLogin && (
             <Box display={"flex"} marginLeft="auto" marginRight={"auto"}>
-              <Tabs
+              {/* <Tabs
                 textColor="inherit"
+              
                 value={value}
                 onChange={(e, val) => setValue(val)}
               >
-                <Tab label="Blogs" LinkComponent={Link} to="/blogs" />
+                <Tab label="Blogs"    LinkComponent={Link} to="/blogs" />
                 <Tab label="My Blogs" LinkComponent={Link} to="/myblogs" />
                 <Tab label="Create Blog" LinkComponent={Link} to="/createblog" />
                
-              </Tabs>
+              </Tabs> */}
+
+<Button
+                  sx={{ margin: 1, color: "white" }}
+                 
+                  LinkComponent={Link}
+                  to="/blogs"
+                >
+                  Blogs
+                </Button>
+<Button
+                  sx={{ margin: 1, color: "white" }}
+                  LinkComponent={Link}
+                  to="/myblogs"
+                >
+                  My Blogs
+                </Button>
+<Button
+                  sx={{ margin: 1, color: "white" }}
+                  LinkComponent={Link}
+                  to="/createblog"
+                >
+                 Create Blog
+                </Button>
+
+
+
+
             </Box>
           )}
           <Box display={"flex"} marginLeft="auto">
@@ -59,6 +96,7 @@ const Header = () => {
               <>
                 <Button
                   sx={{ margin: 1, color: "white" }}
+                  variant="contained"
                   LinkComponent={Link}
                   to="/login"
                 >
@@ -66,6 +104,7 @@ const Header = () => {
                 </Button>
                 <Button
                   sx={{ margin: 1, color: "white" }}
+                  variant="contained" 
                   LinkComponent={Link}
                   to="/register"
                 >
@@ -74,7 +113,7 @@ const Header = () => {
               </>
             )}
             {isLogin && (
-              <Button onClick={handleLogout} sx={{ margin: 1, color: "white" }}>
+              <Button    variant="contained"  onClick={handleLogout} sx={{ margin: 1, color: "white" }}>
                 Logout
               </Button>
             )}

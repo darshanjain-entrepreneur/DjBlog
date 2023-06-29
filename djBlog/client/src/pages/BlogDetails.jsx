@@ -2,7 +2,7 @@ import React , {useState , useEffect} from 'react'
 import axios from "axios";
 import {useParams , useNavigate} from "react-router-dom";
 import { Button, InputLabel, TextField, Typography , Box } from '@mui/material';
-
+import toast from "react-hot-toast"
 
 const BlogDetails = () => {
 
@@ -72,12 +72,14 @@ try {
     })
 
     if(data?.success){
-        alert("blog Updated")
+        toast.success("blog Updated")
         navigate('/myblogs')
+    }else{
+        toast.error(data?.message)
     }
     
 } catch (error) {
-    console.log(error);
+    toast.error(error.message);
 }
 
 }

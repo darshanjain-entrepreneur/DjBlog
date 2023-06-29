@@ -2,6 +2,7 @@ import React, { useEffect , useState } from 'react'
 import axios from "axios"
 import  BlogCard  from '../components/BlogCard';
 
+
 const Blogs = () => {
 
 const [blogs , setBlogs] = useState([]);
@@ -29,6 +30,9 @@ useEffect(() => {
 
 
   return (
+
+    <>
+   
    
     <div>
     {blogs && blogs.length > 0 ?( blogs.map((blog) => (
@@ -38,6 +42,7 @@ useEffect(() => {
     ))):(<h1>No Blogs Present</h1>)
     }
      </div>
+     </>
   )
 }
 
