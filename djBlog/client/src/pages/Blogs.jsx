@@ -32,7 +32,9 @@ useEffect(() => {
    <div>
   
   {blogs && blogs.map(blog => (
-      <BlogCard  title={blog.title} description={blog.description} image={blog.image} 
+      <BlogCard 
+      isUser={localStorage.getItem('userId') === blog.user._id}
+      id={blog._id} title={blog.title} description={blog.description} image={blog.image} 
       username={blog.user.username} time={blog.createdAt}/>
   ))}
    </div>
