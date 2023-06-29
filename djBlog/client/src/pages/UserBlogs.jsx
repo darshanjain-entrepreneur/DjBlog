@@ -32,8 +32,8 @@ useEffect(() => {
   return (
     <div>
   {blogs && blogs.length > 0 ?( blogs.map((blog) => (
-      <BlogCard isUser={true} id={blog._id} title={blog.title} description={blog.description} image={blog.image} 
-      username={blog.user.username} time={blog.createdAt}/>
+      <BlogCard isUser={true} id={blog?._id} title={blog?.title} description={blog?.description} image={blog?.image} 
+      username={blog?.user?.username} time={blog?.createdAt}/>
 
   ))):(<h1>You have not created the blog</h1>)
   }

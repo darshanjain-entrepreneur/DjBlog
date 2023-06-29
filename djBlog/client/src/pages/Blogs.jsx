@@ -29,15 +29,15 @@ useEffect(() => {
 
 
   return (
-   <div>
+   
+    <div>
+    {blogs && blogs.length > 0 ?( blogs.map((blog) => (
+        <BlogCard  isUser={localStorage.getItem('userId') === blog?.user?._id}id={blog?._id} title={blog?.title} description={blog?.description} image={blog?.image} 
+        username={blog?.user?.username} time={blog?.createdAt}/>
   
-  {blogs && blogs.map(blog => (
-      <BlogCard 
-      isUser={localStorage.getItem('userId') === blog.user._id}
-      id={blog._id} title={blog.title} description={blog.description} image={blog.image} 
-      username={blog.user.username} time={blog.createdAt}/>
-  ))}
-   </div>
+    ))):(<h1>No Blogs Present</h1>)
+    }
+     </div>
   )
 }
 

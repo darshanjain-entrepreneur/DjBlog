@@ -8,6 +8,7 @@ const BlogDetails = () => {
 
 const [blog , setBlog] = useState({});
 const id = useParams().id;
+console.log(`${id} and darshan is great`);
 const navigate = useNavigate();
 
 const [inputs , setInputs] = useState({});
@@ -63,15 +64,15 @@ const handleSubmit = async (e) => {
     e.preventDefault();
 try {
 
-    const {data} = await axios.post('/api/v1/blog/createblog', {
+    const {data} = await axios.put(`/api/v1/blog/updateblog/${id}`, {
         title:inputs.title,
         description:inputs.description,
         image:inputs.image,
-        user:id
+        user:blog.user
     })
 
     if(data?.success){
-        alert("blog created successfully")
+        alert("blog Updated")
         navigate('/myblogs')
     }
     

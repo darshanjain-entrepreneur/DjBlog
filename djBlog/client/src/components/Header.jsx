@@ -16,6 +16,7 @@ import { authActions } from "../redux/store";
 const Header = () => {
   // global state
   let isLogin = useSelector((state) => state.isLogin);
+  isLogin = isLogin || localStorage.getItem('userId');
 
   const dispatch = useDispatch();
   const navigate = useNavigate();
@@ -27,6 +28,7 @@ const Header = () => {
     try {
       dispatch(authActions.Logout());
      alert('logged out');
+     localStorage.removeItem("userId");
       navigate("/login");
   
     } catch (error) {

@@ -90,7 +90,7 @@ exports.updateBlogController = async (req , res) => {
 try {
     const {id} = req.params;
 
-    const {title , description , image} = req.body;
+    const {title , description , image , user} = req.body;
 
     const blog = await  blogModel.findByIdAndUpdate(id , {...req.body} , {new: true});
     
