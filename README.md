@@ -2,7 +2,10 @@
 
 It is a Tech Blog for Developers and people who wants to get into tech and for people who wants to know about new things happening in tech.
 
+# test User
 
+email : testuser@gmail.com
+password : testuser123
 
 
 ## Run Locally
